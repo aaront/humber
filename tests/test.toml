@@ -1,0 +1,7 @@
+[meta]
+title = "somepost"
+tags = ["some", "tags"]
+
+[[photo]]
+src = "some/path.jpg"
+type = "grouped"

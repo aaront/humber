@@ -1,0 +1,13 @@
+{
+    "python.pythonPath": "/home/aarontoth/.cache/pypoetry/virtualenvs/courant-pnavdFJc-py3.8/bin/python",
+    "python.linting.flake8Enabled": true,
+    "python.linting.banditEnabled": true,
+    "python.formatting.provider": "black",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "restructuredtext.confPath": ""
+}
