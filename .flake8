@@ -1,0 +1,15 @@
+[flake8]
+ignore = E402
+max-line-length = 120
+exclude =
+    tests,
+    docs,
+    .egg,
+    .egg-info,
+    .eggs,
+    .mypy-cache,
+    .pytest-cache,
+    .venv,
+    dist,
+    build,
+max-complexity = 10 
