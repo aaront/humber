@@ -24,5 +24,5 @@ def create(path: str) -> Project:
 
     with open(os.path.join(path, "project.toml"), "w", encoding="utf-8") as f:
         f.write(project_conf.as_string())
-    
+
     return Project(path)

@@ -4,7 +4,9 @@ from .project import create
 
 
 @click.command()
-@click.argument("path", type=click.Path(exists=False, file_okay=False, allow_dash=False))
+@click.argument(
+    "path", type=click.Path(exists=False, file_okay=False, allow_dash=False)
+)
 def new(path: str):
     """Creates a new project
     """
