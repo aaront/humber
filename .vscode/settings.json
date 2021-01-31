@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/aarontoth/.cache/pypoetry/virtualenvs/courant-rp0nSEf0-py3.8/bin/python",
+    "python.pythonPath": "/home/aarontoth/.cache/pypoetry/virtualenvs/humber-rp0nSEf0-py3.8/bin/python",
     "python.linting.flake8Enabled": true,
     "python.linting.banditEnabled": true,
     "python.formatting.provider": "black",
