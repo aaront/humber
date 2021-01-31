@@ -1,4 +1,4 @@
-from courant.parse import render_str
+from humber.parse import render_str
 
 
 def test_render_metadata():

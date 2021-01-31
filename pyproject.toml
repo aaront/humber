@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "courant"
+name = "humber"
 version = "0.1.0"
 description = "An opinionated photo stream site generator"
 authors = ["Aaron Toth <atoth89@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.rst"
-repository = "https://github.com/aaront/courant"
+repository = "https://github.com/aaront/humber"
 keywords = ["static", "generator", "photography", "gallery", "blog"]
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
@@ -37,7 +37,7 @@ bandit = "^1.7.0"
 mypy = "^0.800"
 
 [tool.poetry.scripts]
-courant = "courant.console:run"
+humber = "humber.console:run"
 
 [build-system]
 requires = ["poetry>=0.12"]

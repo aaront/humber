@@ -1,4 +1,4 @@
-from courant import __version__
+from humber import __version__
 
 
 def test_version():

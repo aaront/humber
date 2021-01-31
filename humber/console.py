@@ -17,7 +17,7 @@ def new(path: str):
 @click.pass_context
 def run(ctx):
     """
-    +++ COURANT +++
+    +++ humber +++
     """
     pass
 
