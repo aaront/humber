@@ -1,25 +1,19 @@
-from courant.renderer import render_str
+from courant.parse import render_str
 
 
 def test_render_metadata():
-    toml = """
-[meta]
-title = "somepost"
-tags = ["some", "tags"]
-description = \"\"\"
-Some *markdown* content.
-\"\"\"
-
-[[photo]]
-src = "some/path.jpg"
-type = "grouped"
+    markdown_str = """
+---
+title: Third test
+date: 2020-05-04
+---
+Post content as **markdown**
     """
 
-    template = """
-    {{ meta.title }}
+    template = """{{ meta.title }}
+{{ meta.date }}
 
-    {{ meta.description | markdown }}
-    """
+{{ content | markdown }}"""
 
-    rendered = render_str(toml, template)
-    assert rendered
+    rendered = render_str(markdown_str, template)
+    assert rendered == 'Third test\n2020-05-04\n\n<p>Post content as <strong>markdown</strong></p>\n'

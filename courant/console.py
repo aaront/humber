@@ -8,8 +8,7 @@ from .project import create
     "path", type=click.Path(exists=False, file_okay=False, allow_dash=False)
 )
 def new(path: str):
-    """Creates a new project
-    """
+    """Creates a new project"""
     create(path)
 
 
@@ -18,7 +17,7 @@ def new(path: str):
 @click.pass_context
 def run(ctx):
     """
-+++ COURANT +++
+    +++ COURANT +++
     """
     pass
 

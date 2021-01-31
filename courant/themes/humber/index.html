@@ -1,0 +1,15 @@
+{% block title %}{{ meta.name }}{% endblock title %}
+{% block content %}
+{% for post in posts %}
+    <article>
+        <h1>{{ p.title }}</h1>
+        {% if post.tags %}
+            <ul>
+            {% for tag in post.tags %}
+                <li>{{ tag }}</li>
+            {% endfor %}
+            </uL>
+        {% endif %}
+    </article>
+{% endfor %}
+{% endblock content %}
