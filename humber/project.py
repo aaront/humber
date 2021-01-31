@@ -1,6 +1,8 @@
 import os.path
 from tomlkit import document, table
 
+from . import __title__
+
 
 class Project:
     def __init__(self, path: str):
@@ -23,7 +25,7 @@ def create(path: str) -> Project:
 
     poetry_deps = table()
     poetry_deps.add("python", "^3.8")
-    poetry_deps.add("humber", "*")
+    poetry_deps.add(__title__, "*")
     project_conf.add("tool.poetry.dependencies", poetry_deps)
 
     build_sys = table()
