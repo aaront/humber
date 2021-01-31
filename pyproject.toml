@@ -13,7 +13,6 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Internet :: WWW/HTTP",
@@ -23,19 +22,19 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-mistune = {version = "^2.0.0-alpha.3", allow-prereleases = true}
-pillow = "^7.1.1"
-jinja2 = "^2.11.2"
-click = "^7.1.1"
-tomlkit = "^0.6.0"
+Pillow = "^8.1.0"
+Jinja2 = "^2.11.3"
+click = "^7.1.2"
+tomlkit = "^0.7.0"
 python-frontmatter = "^0.5.0"
+mistune = {version = "2.0.0a6", allow-prereleases = true}
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
-flake8 = "^3.7.9"
-flake8-black = "^0.1.1"
-bandit = "^1.6.2"
-mypy = "^0.770"
+pytest = "^6.2.2"
+flake8 = "^3.8.4"
+flake8-black = "^0.2.1"
+bandit = "^1.7.0"
+mypy = "^0.800"
 
 [tool.poetry.scripts]
 courant = "courant.console:run"
