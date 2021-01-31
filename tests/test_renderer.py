@@ -16,4 +16,7 @@ Post content as **markdown**
 {{ content | markdown }}"""
 
     rendered = render_str(markdown_str, template)
-    assert rendered == 'Third test\n2020-05-04\n\n<p>Post content as <strong>markdown</strong></p>\n'
+    assert (
+        rendered
+        == "Third test\n2020-05-04\n\n<p>Post content as <strong>markdown</strong></p>\n"
+    )
