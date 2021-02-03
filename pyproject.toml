@@ -37,7 +37,7 @@ bandit = "^1.7.0"
 mypy = "^0.800"
 
 [tool.poetry.scripts]
-humber = "humber.console:run"
+humber = "humber.cli:run"
 
 [build-system]
 requires = ["poetry>=0.12"]
