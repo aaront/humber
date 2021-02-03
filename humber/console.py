@@ -1,25 +1,28 @@
 import click
 
-from .project import create
+from .project import Project
+
+pass_project = click.make_pass_decorator(Project)
 
 
 @click.command()
-@click.argument(
-    "path", type=click.Path(exists=False, file_okay=False, allow_dash=False)
-)
-def new(path: str):
+@pass_project
+def new(project: Project):
     """Creates a new project"""
-    create(path)
+    project.create()
 
 
 @click.group()
+@click.option(
+    "--project", type=click.Path(exists=False, file_okay=False, allow_dash=False)
+)
 @click.version_option()
 @click.pass_context
-def run(ctx):
+def run(ctx, project):
     """
     +++ humber +++
     """
-    pass
+    ctx.obj = Project(path=project)
 
 
 run.add_command(new)
