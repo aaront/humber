@@ -1,15 +1,15 @@
 import click
 
-from .project import Project
+from .site import Site
 
-pass_project = click.make_pass_decorator(Project)
+pass_site = click.make_pass_decorator(Site)
 
 
 @click.command()
-@pass_project
-def new(project: Project):
+@pass_site
+def new(site: Site):
     """Creates a new project"""
-    project.create()
+    site.create()
 
 
 @click.group()
@@ -18,11 +18,11 @@ def new(project: Project):
 )
 @click.version_option()
 @click.pass_context
-def run(ctx, project):
+def run(ctx, site):
     """
     +++ humber +++
     """
-    ctx.obj = Project(path=project)
+    ctx.obj = Site(path=site)
 
 
 run.add_command(new)

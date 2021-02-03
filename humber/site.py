@@ -5,7 +5,7 @@ from tomlkit import document, table
 from . import __title__
 
 
-class Project:
+class Site:
     def __init__(self, path: str):
         self.path = path
 
