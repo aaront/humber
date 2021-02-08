@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "humber"
-version = "0.1.0"
+version = "0.0.0" # Automatically set by poetry-dynamic-versioning
 description = "An opinionated photo stream site generator"
 authors = ["Aaron Toth <atoth89@gmail.com>"]
 license = "Apache-2.0"
@@ -14,6 +14,7 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Software Development :: Libraries :: Python Modules"
@@ -35,10 +36,20 @@ flake8 = "^3.8.4"
 flake8-black = "^0.2.1"
 bandit = "^1.7.0"
 mypy = "^0.800"
+poetry-dynamic-versioning = "^0.12.2"
+build = "^0.2.0"
 
 [tool.poetry.scripts]
 humber = "humber.cli:run"
 
+[tool.pytest]
+testpaths = "tests"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+style = "pep440"
+bump = true
+
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry.core.masonry.api"
