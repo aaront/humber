@@ -1,5 +1,6 @@
 import os.path
 
+from loguru import logger
 from tomlkit import document, table
 
 from . import __title__
@@ -11,10 +12,12 @@ class Site:
 
     def create(self, name: str = None):
         if self.config_path:
-            raise Exception("Config already created")
+            logger.error("Config file already created")
+            return
         _name = name or os.path.basename(os.getcwd())
-        config_root = os.path.join(os.getcwd(), _name)
+        config_root = os.path.join(os.getcwd(), name or "")
         self.config_path = os.path.join(config_root, "pyproject.toml")
+        logger.info("Creating project: {path}", path=config_root)
 
         if not os.path.exists(config_root):
             os.mkdir(config_root)
@@ -45,3 +48,4 @@ class Site:
 
         with open(self.config_path, "w", encoding="utf-8") as f:
             f.write(project_conf.as_string())
+        logger.info("Created new config: {conf}", conf=self.config_path)

@@ -6,7 +6,7 @@ pass_site = click.make_pass_decorator(Site)
 
 
 @click.command()
-@click.option("--name", "-n", type=str, prompt="Site name")
+@click.argument("name", nargs=1, required=False)
 @pass_site
 def new(site: Site, name: str):
     """Creates a new project"""
