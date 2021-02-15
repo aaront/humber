@@ -12,11 +12,14 @@ class Site:
 
     def create(self, name: str = None):
         if self.config_path:
-            logger.error("Config file already created")
+            logger.error("Config file already initialized: {config}", config=self.config_path)
             return
         _name = name or os.path.basename(os.getcwd())
         config_root = os.path.join(os.getcwd(), name or "")
         self.config_path = os.path.join(config_root, "pyproject.toml")
+        if os.path.exists(self.config_path):
+            logger.error("Config file already exists at: {config}", config=self.config_path)
+            return
         logger.info("Creating project: {path}", path=config_root)
 
         if not os.path.exists(config_root):
