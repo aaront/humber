@@ -1,10 +1,10 @@
 from pathlib import Path
 
-from humber.process.image import create_images
+from humber.engines.image import ImageEngine
 
 
-def test_output_images(tmp_path: Path):
+def test_generate_images(tmp_path: Path):
     input_file = Path(__file__).resolve().parent / "images" / "IMGP8501.jpg"
-    create_images(input_file, output_dir=tmp_path)
+    ImageEngine(output_path=tmp_path).generate(input_file)
     files = list(tmp_path.iterdir())
     assert len(files) == 4
