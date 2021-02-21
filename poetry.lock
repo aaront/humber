@@ -372,6 +372,21 @@ toml = "*"
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
 [[package]]
+name = "pytest-timer"
+version = "0.0.10"
+description = "A timer plugin for pytest"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pytest = "*"
+
+[package.extras]
+colorama = ["colorama"]
+termcolor = ["termcolor"]
+
+[[package]]
 name = "python-frontmatter"
 version = "0.5.0"
 description = "Parse and manage posts with YAML (or other) frontmatter"
@@ -472,7 +487,7 @@ dev = ["pytest (>=4.6.2)", "black (>=19.3b0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "c218d5e495f493ccc295e4b40f3ab270b51f208260ae6eaf861742bc574f47c5"
+content-hash = "b0237f99e83509a43f2862fe5e77f463cf22fdd937acee482b6b445536e5440e"
 
 [metadata.files]
 appdirs = [
@@ -718,6 +733,9 @@ pyparsing = [
 pytest = [
     {file = "pytest-6.2.2-py3-none-any.whl", hash = "sha256:b574b57423e818210672e07ca1fa90aaf194a4f63f3ab909a2c67ebb22913839"},
     {file = "pytest-6.2.2.tar.gz", hash = "sha256:9d1edf9e7d0b84d72ea3dbcdfd22b35fb543a5e8f2a60092dd578936bf63d7f9"},
+]
+pytest-timer = [
+    {file = "pytest-timer-0.0.10.tar.gz", hash = "sha256:25908a9872bf6b80b12b6c319327b97ad34a568cb68e4d06e148f439de366e0a"},
 ]
 python-frontmatter = [
     {file = "python-frontmatter-0.5.0.tar.gz", hash = "sha256:a9c2e90fc38e9f0c68d8b82299040f331ca3b8525ac7fa5f6beffef52b26c426"},
