@@ -10,5 +10,8 @@
     "python.testing.nosetestsEnabled": false,
     "python.testing.pytestEnabled": true,
     "restructuredtext.confPath": "",
-    "python.linting.mypyEnabled": true
+    "python.linting.mypyEnabled": true,
+    "files.associations": {
+        "*.html": "jinja-html"
+    }
 }

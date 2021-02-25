@@ -3,9 +3,7 @@ from pathlib import Path
 from typing import Dict, List, TypedDict
 
 import pillow_avif  # noqa: F401
-from PIL import Image
-
-from . import Engine
+from PIL import Image as _Image
 
 DEFAULT_IMAGE_QUALITY = 80
 
@@ -21,53 +19,60 @@ class ImageMeta(TypedDict):
     outputs: List[ImageOutputMeta]
 
 
-class ImageEngine(Engine):
+class Image:
+    _image: _Image
+    filename: str
+
+    def __init__(self, path: Path) -> None:
+        if not path or not path.exists:
+            raise TypeError("Image path was not provided")
+        if not path.exists():
+            raise ValueError(f"Image path '{path}' does not exist")
+        self._image = _Image.open(path)
+        self.filename, _ = os.path.splitext(os.path.basename(self._image.filename))
+
+    def scale_width(self, max_width: int) -> _Image:
+        source_w, source_h = self._image.size
+        w_ratio = max_width / float(source_w)
+        max_height = int(source_h * w_ratio)
+        return self._image.resize((max_width, max_height))
+
+
+class ResponsiveImage(Image):
     widths: List[int]
     formats: List[str]
     qualities: Dict[str, int]
-    output_path: Path
 
     def __init__(
         self,
+        path: Path,
         widths: List[int] = [300, 1000],
         formats: List[str] = ["webp", "avif", "jpg"],
         qualities: Dict[str, int] = {"avif": 70},
-        output_path=None,
     ) -> None:
-        super().__init__()
+        super().__init__(path)
         self.widths = widths
         self.formats = formats
         self.qualities = qualities
-        self.output_path = output_path
 
-    def generate(self, fp: Path) -> ImageMeta:
-        if not self.output_path:
-            raise ValueError("output_path not provided")
-        source_image = Image.open(fp)
-        source_w, source_h = source_image.size
+    def generate(self, output_path: Path):
         image_outputs: List[ImageOutputMeta] = []
         for width in self.widths:
-            w_ratio = width / float(source_w)
-            height = int(source_h * w_ratio)
-            scaled_image = source_image.resize((width, height))
-            filename, _ = os.path.splitext(os.path.basename(source_image.filename))
+            scaled_image = self.scale_width(width)
             for format in self.formats:
-                output_path = self.output_path / f"{filename}.{width}w.{format}"
+                output_file = output_path / f"{self.filename}.{width}w.{format}"
                 quality = self.qualities.get(format) or DEFAULT_IMAGE_QUALITY
                 scaled_image.save(
-                    output_path,
+                    output_file,
                     quality=quality,
                     speed=0,  # AVIF
                     method=6,  # WebP
                     **_get_avif_qmin_max(quality),
                 )
                 image_outputs.append(
-                    ImageOutputMeta(path=output_path, format=format, width=width)
+                    ImageOutputMeta(path=output_file, format=format, width=width)
                 )
-        return ImageMeta(original_path=fp, outputs=image_outputs)
-
-    def generate_html(self, fp: Path, template: str = None) -> str:
-        pass
+        return ImageMeta(original_path=output_file, outputs=image_outputs)
 
 
 def _get_avif_qmin_max(quality: int) -> Dict[str, int]:
