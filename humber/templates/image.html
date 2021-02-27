@@ -1,0 +1,6 @@
+<picture>
+    {% for format in formats %}
+    <source {{ image | generate_srcsets(output_path=output_path, format=format, widths=widths) }}>
+    {% endfor %}
+    <img width="1280" height="850" src="{{image.url}}/{{image.filename}}{{image.ext}}" style="background-size: cover; background-image: none;" decoding="async" loading="lazy">
+</picture>

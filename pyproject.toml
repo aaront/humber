@@ -41,6 +41,7 @@ mypy = "^0.800"
 poetry-dynamic-versioning = "^0.12.2"
 build = "^0.2.0"
 pytest-timer = "^0.0.10"
+pytest-asyncio = "^0.14.0"
 
 [tool.poetry.scripts]
 humber = "humber.cli:run"
